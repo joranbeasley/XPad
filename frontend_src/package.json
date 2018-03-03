@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.html",
   "scripts": {
-    "build:scss": "node-sass --source-map true assets/scss/ -o ../server/static/_bundles/css",
+    "build:scss": "node-sass --source-map true style/scss/admin.scss style/scss/site.scss -o ../server/static/_bundles/css",
     "build:ts": "webpack",
     "build:all": "npm run build:ts && npm run build:scss"
   },
