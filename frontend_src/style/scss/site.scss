@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
+@import "variables";
+@import "3d-button";
+@import "modal-style";
+
+#header-div{
+  position: absolute;
+  top:0;left: 0;
+  width: 100%;
+  height: $header-height;
+  font-family: 'Source Sans Pro', sans-serif;
+
+  //background-color: #2f2a2a;
+}
+#editor-div{
+  position: absolute;
+  left:0;
+  top:$header-height;
+  bottom:$footer-height;
+  right:0;
+}
+#footer-div{
+  position: absolute;
+  bottom:0;left: 0;
+  width: 100%;
+  height: $footer-height;
+  font-family: 'Source Sans Pro', sans-serif;
+  //background-color: #2f2a2a
+  strong.extra{
+    font-weight: 900;
+    font-size: 26px ;
+  }
+  #user-button-container {
+    display: inline-block;
+    height: 30px;
+    .user-indicator-btn {
+      display: inline-block;
+      padding-left: 10px;
+      padding-right: 10px;
+      margin:1px;
+      border-radius: 7px;
+      background: #393a3f;
+    }
+
+  }
+}
+

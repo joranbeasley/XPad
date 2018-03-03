@@ -1,0 +1,24 @@
+@import "variables";
+#user-button-container {
+  .user-indicator-btn {
+    margin-left: 25px;
+  }
+  .user-indicator-btn:before {
+    position: relative;
+    left: -5px;
+    //content:"\25CF";
+    font-size: 10px;
+    content:"\25A0";
+    color: grey;
+  }
+  .user-indicator-btn.active:before {
+    color: $active-color;
+  }
+  .user-indicator-btn.inactive:before {
+    color: $inactive-color;
+  }
+  .user-indicator-btn.admin{
+      color: goldenrod;
+      font-weight: bold;
+  }
+}
