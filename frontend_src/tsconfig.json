@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "outDir": "./lib-build/",
+    "sourceMap": true,
+    "noImplicitAny": true,
+    "module": "commonjs",
+    "lib": [ "es2015", "dom" ],
+    "target": "es5"
+  },
+  "files": [
+//    "./src/require.config.ts",
+    "./typescript_src/app.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

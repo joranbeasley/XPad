@@ -1,0 +1,23 @@
+{
+  "name": "xpad-frontend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.html",
+  "scripts": {
+    "build:scss": "node-sass --source-map true assets/scss/ -o ../server/static/_bundles/css",
+    "build:ts": "webpack",
+    "build:all": "npm run build:ts && npm run build:scss"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "node-sass": "~4.7.2",
+    "awesome-typescript-loader": "~3.5.0",
+    "webpack": "~4.0.1"
+  },
+  "devDependencies": {
+    "node-sass": "~4.7.2",
+    "typescript": "~2.7.2",
+    "webpack-cli": "~2.0.9"
+  }
+}
