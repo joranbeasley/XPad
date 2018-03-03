@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
 
-@import "./imports/variables";
-@import "./imports/3d-button";
-@import "./imports/modal-style";
+@import "../scss-imports/variables";
+@import "../scss-imports/3d-button";
+@import "../scss-imports/modal-style";
 
 #header-div{
   position: absolute;
