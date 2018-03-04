@@ -1,0 +1,103 @@
+{% extends "pages/admin-base.html" %}
+{% block body %}
+
+    <table class="bordered">
+        <tr>
+            <th>public</th>
+            <th>name</th>
+            <th>active</th>
+            <th>owner</th>
+            <th>users</th>
+            <th>created</th>
+            <th><a href="#create-room-modal" class="btn green modal-trigger">Create Room</a></th>
+        </tr>
+
+        {% for room in rooms %}
+            <tr>
+                <td>
+                    {% if room.invite_only %}
+                        <i class="material-icons green">lock_outline</i>
+                    {% else %}
+                        <i class="material-icons red">lock_open</i>
+                    {% endif %}
+                </td>
+                <td>
+                    <a href="/room/{{ room.id }}"><i class="fa fa-link"></i> {{ room.room_name }}</a>
+                </td>
+                <td>
+                    <div class="switch">
+                        <label>
+                            Off
+                            <input onchange="notify(this,{{ room.id }})" type="checkbox"
+                                   {% if room.is_active %}checked="checked"{% endif %}>
+                            <span class="lever"></span>
+                            Active
+                        </label>
+                    </div>
+                </td>
+                <td>
+                    {{ room.owner_name() }}
+                </td>
+                <td>
+                    {{ room.active_users_count() }}/{{ room.all_users_count() }}
+                </td>
+                <td>
+                    {{ room.created|strftime("%b %d,%Y") }}
+                </td>
+                <td>
+                    <a href="/admin/room-evaluation/{{ room.id }}" class="btn blue"><i class="fas fa-thumbs-up"></i>Evaluate</a>
+
+                    <button onclick="delete_room('{{ room.room_name }}',{{ room.id }})" class="btn btn-floating red"><i
+                            class="material-icons">delete_forever</i></button>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8"><h3>You Havent Got Any Rooms Yet. Go Ahead and create some!</h3></td>
+            </tr>
+        {% endfor %}
+    </table>
+    <!-- Modal Structure -->
+    <div id="create-room-modal" class="modal">
+        <div class="modal-content">
+            <h4>Create Room</h4>
+            <form class="row" id="create-room-form" action="/admin" method="post">
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input name="room_name" placeholder="Room Name" id="room_name" type="text" class="validate">
+                        <label for="room_name">Room Name</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s4">
+                        <input name="invite_only" type="checkbox" id="invite_only" checked="checked"/>
+                        <label for="invite_only">Invite Only</label>
+                    </div>
+                    <div class="col s4">
+                        <div class="red-text hide" id="open_room_warning">This room is open to anyone with the room
+                            name!<i class="material-icons">warning</i></div>
+                    </div>
+                    <div class="col s4">
+                        <input name="owner_id" type="hidden" value="{{ current_user.id }}"/>
+                        <input name="action" type="hidden" value="create::room"/>
+                        <button class="btn blue right">Create Session</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </div>
+    <script>
+        $(".modal").modal()
+
+        function delete_room(room_name, room_id) {
+            if (confirm("Really Delete Room " + room_name + "?")) {
+                if (confirm("You should probably disable the room, not delete it... are you sure you want to delete it?")) {
+                    document.location.href = "/admin/delete/room/" + room_id.toString()
+                }
+            }
+        }
+
+    </script>
+{% endblock %}

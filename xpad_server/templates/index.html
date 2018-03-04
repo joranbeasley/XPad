@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Editor Pad</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
+    <!--<script type="text/javascript" src="require.js"></script>-->
+    <link rel="stylesheet" href="/static/_bundles/css/admin-styles.css" />
+    <link rel="stylesheet" href="/static/_bundles/css/site.css" />
+    <link rel="stylesheet" href="/static/_bundles/css/admin-styles.css" />
+</head>
+<body data-xauth="{{ auth_token }}">
+<div id="header-div">
+    <select id="theme">
+        <option>Initializing...</option>
+        <option>monokai</option>
+        <option>clouds</option>
+        <option>twilight</option>
+    </select>
+    <select id="language">
+        <option>Please Wait...</option>
+        <option>python</option>
+        <option>c_cpp</option>
+        <option>html</option>
+    </select>
+</div>
+<div id="body-div"><div id="editor-div"></div></div>
+<div id="footer-div"><strong class="extra">Ether-X-Pad</strong><div id="user-button-container"></div></div>
+<div id="modal-layer" style="display: none">
+    <div id="modal-username" class="modal-window">
+        <div class="modal-header">
+            <h4>Hello</h4>
+            <h5>My Name Is</h5>
+        </div>
+        <div class="modal-content">
+            <input type="text" id="id_username">
+        </div>
+        <div id="clear:both"></div>
+        <div class="back">
+            <div class="button_base b05_3d_roll">
+                <div>Join Room</div>
+                <div>Sign In</div>
+            </div>
+        </div>
+        <div style="clear:both"></div>
+    </div>
+</div>
+</body>
+</html>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.3.1/ace.js"></script>
+<script type="text/javascript" src="/static/_bundles/site.bundled.js"></script>
